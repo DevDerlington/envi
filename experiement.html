@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Click to Navigate</title>
+<style>
+  /* Just for styling */
+  #container,#container2 {
+    width: 200px;
+    height: 200px;
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div id="container">
+  Click me to go to the next page
+</div>
+
+
+<div id="container2">
+    Click me to go to the next page
+  </div>
+
+  <div id="container3">
+    Click me to go to the next page
+  </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var container = document.getElementById('container');
+  var container2 = document.getElementById('container2');
+  var container3 = document.getElementById('container3');
+
+
+  container.addEventListener('click', function() {
+    // Change the URL to the desired next page
+    window.location.href = 'Curriculum.html';
+ 
+});
+container2.addEventListener('click', function() {
+    // Change the URL to the desired next page
+    window.location.href = 'container.html';
+  });
+});
+
+</script>
+
+</body>
+</html>

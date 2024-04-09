@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Information Management</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    form {
+        margin-bottom: 20px;
+    }
+</style>
+</head>
+<body>
+<h2>Student Information Management</h2>
+<form id="studentForm">
+    <label for="studentName">Name:</label>
+    <input type="text" id="studentName" required><br><br>
+    <label for="studentGrade">Grade:</label>
+    <input type="text" id="studentGrade" required><br><br>
+    <button type="submit" id="addButton">Add Student</button>
+    <button type="button" id="updateButton" style="display:none;">Update Student</button>
+</form>
+<table id="studentTable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Grade</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<script>
+    document.getElementById('studentForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var name = document.getElementById('studentName').value;
+        var grade = document.getElementById('studentGrade').value;
+
+        if (name.trim() === '' || grade.trim() === '') {
+            alert('Please fill out all fields.');
+            return;
+        }
+
+        if (document.getElementById('addButton').style.display !== 'none') {
+            addStudent(name, grade);
+        } else {
+            updateStudent(name, grade);
+        }
+
+        document.getElementById('studentForm').reset();
+    });
+
+    function addStudent(name, grade) {
+        var tableBody = document.getElementById('studentTable').getElementsByTagName('tbody')[0];
+        var newRow = tableBody.insertRow(tableBody.rows.length);
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        var cell3 = newRow.insertCell(2);
+
+        cell1.innerHTML = name;
+        cell2.innerHTML = grade;
+        cell3.innerHTML = '<button onclick="editStudent(this)">Edit</button> <button onclick="deleteStudent(this)">Delete</button>';
+    }
+
+    function editStudent(button) {
+        var row = button.parentNode.parentNode;
+        var name = row.cells[0].innerHTML;
+        var grade = row.cells[1].innerHTML;
+
+        document.getElementById('studentName').value = name;
+        document.getElementById('studentGrade').value = grade;
+
+        document.getElementById('addButton').style.display = 'none';
+        document.getElementById('updateButton').style.display = 'inline-block';
+
+        document.getElementById('updateButton').onclick = function() {
+            updateStudent(name, grade);
+            row.parentNode.removeChild(row);
+            document.getElementById('studentForm').reset();
+            document.getElementById('addButton').style.display = 'inline-block';
+            document.getElementById('updateButton').style.display = 'none';
+        };
+    }
+
+    function updateStudent(oldName, oldGrade) {
+        var newName = document.getElementById('studentName').value;
+        var newGrade = document.getElementById('studentGrade').value;
+
+        if (newName.trim() === '' || newGrade.trim() === '') {
+            alert('Please fill out all fields.');
+            return;
+        }
+
+        var tableBody = document.getElementById('studentTable').getElementsByTagName('tbody')[0];
+        var newRow = tableBody.insertRow(tableBody.rows.length);
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        var cell3 = newRow.insertCell(2);
+
+        cell1.innerHTML = newName;
+        cell2.innerHTML = newGrade;
+        cell3.innerHTML = '<button onclick="editStudent(this)">Edit</button> <button onclick="deleteStudent(this)">Delete</button>';
+    }
+
+    function deleteStudent(button) {
+        var row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
+</script>
+</body>
+</html>

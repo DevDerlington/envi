@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Dashboard</title>
+<style>
+    /* Add your CSS styles here */
+</style>
+</head>
+<body>
+    <div id="dashboard">
+        <h1>Welcome to Student Dashboard</h1>
+        <div id="courses">
+            <h2>Courses</h2>
+            <ul id="courseList"></ul>
+        </div>
+        <div id="timetable">
+            <h2>Timetable</h2>
+            <table id="timetableTable">
+                <!-- Timetable will be filled dynamically using JavaScript -->
+            </table>
+        </div>
+        <div id="results">
+            <h2>Results</h2>
+            <div id="resultContent"></div>
+        </div>
+        <div id="settings">
+            <h2>Settings</h2>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <script>
+        // Sample data for demonstration
+        const courses = ['Mathematics', 'Physics', 'Biology', 'History'];
+        const timetable = [
+            ['Monday', 'Mathematics'],
+            ['Tuesday', 'Physics'],
+            ['Wednesday', 'Biology'],
+            ['Thursday', 'History'],
+            ['Friday', 'Mathematics']
+        ];
+        const results = {
+            'Mathematics': 'A',
+            'Physics': 'B',
+            'Biology': 'C',
+            'History': 'A'
+        };
+
+        // Function to display courses
+        function displayCourses() {
+            const courseList = document.getElementById('courseList');
+            courses.forEach(course => {
+                const li = document.createElement('li');
+                li.textContent = course;
+                courseList.appendChild(li);
+            });
+        }
+
+        // Function to display timetable
+        function displayTimetable() {
+            const timetableTable = document.getElementById('timetableTable');
+            timetable.forEach(entry => {
+                const [day, course] = entry;
+                const row = timetableTable.insertRow();
+                const cell1 = row.insertCell(0);
+                const cell2 = row.insertCell(1);
+                cell1.textContent = day;
+                cell2.textContent = course;
+            });
+        }
+
+        // Function to display results
+        function displayResults() {
+            const resultContent = document.getElementById('resultContent');
+            Object.entries(results).forEach(([course, grade]) => {
+                const p = document.createElement('p');
+                p.textContent = `${course}: ${grade}`;
+                resultContent.appendChild(p);
+            });
+        }
+
+        // Function to logout
+        function logout() {
+            // Implement your logout functionality here
+            alert('Logged out successfully!');
+        }
+
+        // Initialize the dashboard
+        function initializeDashboard() {
+            displayCourses();
+            displayTimetable();
+            displayResults();
+        }
+
+        // Call initializeDashboard when the page is loaded
+        window.onload = initializeDashboard;
+    </script>
+</body>
+</html>

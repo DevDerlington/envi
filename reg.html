@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School Registration</title>
+<style>
+  .progress {
+    width: 100%;
+    background-color: #f1f1f1;
+  }
+
+  .progress-bar {
+    width: 0%;
+    height: 30px;
+    background-color: #4caf50;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+  }
+
+  .stage {
+    display: none;
+  }
+
+  .active {
+    display: block;
+  }
+
+  button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="progress">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<div class="stage active" id="stage1">
+  Stage 1: Personal Information
+
+  
+  <br>
+  <!-- Form fields for personal information -->
+  <button onclick="nextStage()">Next</button>
+</div>
+
+<div class="stage" id="stage2">
+  Stage 2: Contact Information
+  <br>
+  <!-- Form fields for contact information -->
+  <button onclick="prevStage()">Previous</button>
+  <button onclick="nextStage()">Next</button>
+</div>
+
+<div class="stage" id="stage3">
+  Stage 3: Academic Information
+  <br>
+  <!-- Form fields for academic information -->
+  <button onclick="prevStage()">Previous</button>
+  <button onclick="nextStage()">Next</button>
+</div>
+
+<div class="stage" id="stage4">
+  Stage 4: Additional Information
+  <br>
+  <!-- Form fields for additional information -->
+  <button onclick="prevStage()">Previous</button>
+  <button onclick="nextStage()">Next</button>
+</div>
+
+<div class="stage" id="stage5">
+  Stage 5: Review and Submit
+  <br>
+  <!-- Form fields for review and submit -->
+  <button onclick="prevStage()">Previous</button>
+  <button onclick="submitForm()">Submit</button>
+</div>
+
+<script>
+let currentStage = 1;
+const progressBar = document.getElementById('progressBar');
+
+function nextStage() {
+  if (currentStage < 5) {
+    currentStage++;
+    updateProgress();
+  }
+}
+
+function prevStage() {
+  if (currentStage > 1) {
+    currentStage--;
+    updateProgress();
+  }
+}
+
+function updateProgress() {
+  const percent = (currentStage - 1) * 25;
+  progressBar.style.width = percent + '%';
+
+  const stages = document.querySelectorAll('.stage');
+  stages.forEach((stage, index) => {
+    if (index + 1 === currentStage) {
+      stage.classList.add('active');
+    } else {
+      stage.classList.remove('active');
+    }
+  });
+}
+
+function submitForm() {
+  // Logic to submit the form
+  alert('Form submitted successfully!');
+}
+</script>
+
+</body>
+</html>

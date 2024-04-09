@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management</title>
+</head>
+<body>
+    <h1>Student Management</h1>
+    
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName">
+    
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName">
+    
+    <label for="class">Class:</label>
+    <input type="text" id="class">
+    
+    <button onclick="createStudent()">Add Student</button>
+    
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Class</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="studentList"></tbody>
+    </table>
+    
+    <script>
+        let students = [];
+
+        function renderStudents() {
+            const studentList = document.getElementById("studentList");
+            studentList.innerHTML = "";
+            students.forEach((student, index) => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td>${student.firstName}</td>
+                    <td>${student.lastName}</td>
+                    <td>${student.class}</td>
+                    <td>
+                        <button onclick="editStudent(${index})">Edit</button>
+                        <button onclick="deleteStudent(${index})">Delete</button>
+                    </td>
+                `;
+                studentList.appendChild(tr);
+            });
+        }
+
+        function createStudent() {
+            const firstNameInput = document.getElementById("firstName");
+            const lastNameInput = document.getElementById("lastName");
+            const classInput = document.getElementById("class");
+            
+            const firstName = firstNameInput.value;
+            const lastName = lastNameInput.value;
+            const studentClass = classInput.value;
+            
+            const student = {
+                firstName: firstName,
+                lastName: lastName,
+                class: studentClass
+            };
+            
+            students.push(student);
+            renderStudents();
+            
+            // Clear input fields
+            firstNameInput.value = "";
+            lastNameInput.value = "";
+            classInput.value = "";
+        }
+
+        function editStudent(index) {
+            const student = students[index];
+            const newFirstName = prompt("Enter new first name:", student.firstName);
+            const newLastName = prompt("Enter new last name:", student.lastName);
+            const newClass = prompt("Enter new class:", student.class);
+            
+            students[index] = {
+                firstName: newFirstName,
+                lastName: newLastName,
+                class: newClass
+            };
+            
+            renderStudents();
+        }
+
+        function deleteStudent(index) {
+            students.splice(index, 1);
+            renderStudents();
+        }
+    </script>
+</body>
+</html>

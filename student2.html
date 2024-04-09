@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Dashboard</title>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    /* Custom styles for the sidebar navigation */
+    .sidebar-nav {
+        flex-direction: column;
+    }
+
+    @media (min-width: 575.98px) {
+        .navbar-nav .nav-item {
+            width: 100%;
+            text-align: center;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#courses">Courses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#timetable">Timetable</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#results">Results</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#settings">Settings</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                <!-- Main content goes here -->
+                <div class="container">
+                    <div id="courses" class="mt-4">
+                        <h2>Courses</h2>
+                        <!-- Course content goes here -->
+                    </div>
+                    <div id="timetable" class="mt-4">
+                        <h2>Timetable</h2>
+                        <!-- Timetable content goes here -->
+                    </div>
+                    <div id="results" class="mt-4">
+                        <h2>Results</h2>
+                        <!-- Results content goes here -->
+                    </div>
+                    <div id="settings" class="mt-4">
+                        <h2>Settings</h2>
+                        <!-- Settings content goes here -->
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+<!-- Bootstrap JS and jQuery (for Bootstrap functionality) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Click to Navigate</title>
+<style>
+  /* Just for styling */
+  .container {
+    width: 200px;
+    height: 200px;
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container" id="container1">
+  Click me to go to the first page
+</div>
+
+<div class="container" id="container2">
+  Click me to go to the second page
+</div>
+
+<div class="container" id="container3">
+  Click me to go to the third page
+</div>
+
+<div class="container" id="container4">
+    Click me to go to the fourth page
+  </div>
+
+  <div class="container" id="container5">
+    Click me to go to the fifth page
+  </div>
+
+  <div class="container" id="container6">
+    Click me to go to the sixth page
+  </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var container1 = document.getElementById('container1');
+  var container2 = document.getElementById('container2');
+  var container3 = document.getElementById('container3');
+
+  container1.addEventListener('click', function() {
+    // Change the URL to the desired next page for container1
+    window.location.href = 'About Us.html';
+  });
+
+  container2.addEventListener('click', function() {
+    // Change the URL to the desired next page for container2
+    window.location.href = 'index.html';
+  });
+
+  container3.addEventListener('click', function() {
+    // Change the URL to the desired next page for container3
+    window.location.href = 'adminpage.html';
+  });
+
+  container4.addEventListener('click', function() {
+    // Change the URL to the desired next page for container4
+    window.location.href = 'registration.html';
+  });
+
+  container5.addEventListener('click', function() {
+    // Change the URL to the desired next page for container5
+    window.location.href = 'registration2.html';
+  });
+
+  container6.addEventListener('click', function() {
+    // Change the URL to the desired next page for container6
+    window.location.href = 'registration3.html';
+  });
+
+
+
+});
+</script>
+
+</body>
+</html>
